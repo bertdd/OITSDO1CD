@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
-namespace BreakoutGame
+namespace BreakoutGame;
+
+public class Game
 {
-  internal class Game
-  {
-  }
+  /// <summary>
+  /// Position of the paddle
+  /// </summary>
+  public Point PaddlePosition { get; set; }
 }
