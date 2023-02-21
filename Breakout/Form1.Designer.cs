@@ -28,8 +28,10 @@
     /// </summary>
     private void InitializeComponent()
     {
+      components = new System.ComponentModel.Container();
       paddle = new Label();
       ball = new Label();
+      timer = new System.Windows.Forms.Timer(components);
       SuspendLayout();
       // 
       // paddle
@@ -48,6 +50,12 @@
       ball.Size = new Size(64, 64);
       ball.TabIndex = 1;
       // 
+      // timer
+      // 
+      timer.Enabled = true;
+      timer.Interval = 25;
+      timer.Tick += timer_Tick;
+      // 
       // Form1
       // 
       AutoScaleDimensions = new SizeF(13F, 32F);
@@ -58,6 +66,7 @@
       Controls.Add(paddle);
       Name = "Form1";
       Text = "Breakout";
+      Resize += Form1_Resize;
       ResumeLayout(false);
     }
 
@@ -65,5 +74,6 @@
 
     private Label paddle;
     private Label ball;
+    private System.Windows.Forms.Timer timer;
   }
 }
