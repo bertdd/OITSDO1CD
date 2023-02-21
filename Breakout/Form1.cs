@@ -1,3 +1,5 @@
+using BreakoutGame;
+
 namespace Breakout;
 
 public partial class Form1 : Form
@@ -69,4 +71,6 @@ public partial class Form1 : Form
   {
     paddle.Location = new Point(paddle.Location.X, Height - 200);
   }
+
+  private Game game = new();
 }
