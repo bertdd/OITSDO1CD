@@ -1,35 +1,28 @@
-﻿using System;
-using System.Drawing;
-using System.Reflection.Metadata;
+﻿using System.Drawing;
 
 namespace BreakoutGame;
 
 public class Game
 {
   /// <summary>
-  /// Position of the paddle
+  /// Width of the game window
   /// </summary>
-  public Point PaddleLocation { get; set; }
-
+  public int Width { get; set; }
 
   /// <summary>
-  /// Step speed of the paddle
+  /// Height of the game window
   /// </summary>
-  public int PaddleStep { get; set; } = 50;
+  public int Height { get; set; }
 
-  public void MoveLeft()
+  public void Resize(int width, int height)
   {
-    PaddleLocation = new Point(Math.Max(0, PaddleLocation.X - PaddleStep), PaddleLocation.Y);
-    PaddleMoved?.Invoke(this, new MoveEventArgs(PaddleLocation));
+    Width = width;
+    Height = height;
+    Paddle?.Move(new Point(Paddle.Location.X, Height - 200));
   }
 
-  public void MoveRight(int width, int paddleWidth)
-  {
-    var maxX = width - paddleWidth - 26;
-    PaddleLocation = new Point(Math.Min(PaddleLocation.X + PaddleStep, maxX), PaddleLocation.Y);
-    PaddleMoved?.Invoke(this, new MoveEventArgs(PaddleLocation));
-  }
+  public Paddle? Paddle;
 
-  public event EventHandler<MoveEventArgs> PaddleMoved;
+  public Ball? Ball;
 }
 
